@@ -47,6 +47,8 @@ function cosign-cmd() {
         printenv | grep COSIGN
     echo "--- [DEBUG] End of variables ---"
 
+    echo "cosign $cmd -y --key=env://COSIGN_KEY $REKOR_OPT ${opts[@]} $FULL_IMAGE_REF"
+
     # To consider: We could probably do without the base64 encoding if we had a
     # dependable way to create Jenkins secret text credentials with multiple line
     # breaks in them. If the COSIGN_PASSWORD and COSIGN_KEY vars were created
