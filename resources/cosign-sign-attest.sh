@@ -46,7 +46,10 @@ function cosign-cmd() {
     COSIGN_KEY=$(base64d "$COSIGN_SECRET_KEY") \
         printenv | grep TRUSTIFICATION
     echo "--- [DEBUG] End of variables ---"
+    echo "--- [DEBUG] Printing 'opts' array contents ---"
+    # This will print each item in the array
     printf "  %s\n" "${opts[@]}"
+    echo "--- [DEBUG] End of 'opts' array ---"
     echo "cosign $cmd -y --key=env://COSIGN_KEY $REKOR_OPT ${opts[@]} $FULL_IMAGE_REF"
 
     unset TRUSTIFICATION_OIDC_ISSUER_URL
