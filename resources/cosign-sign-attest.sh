@@ -60,7 +60,10 @@ function cosign-cmd() {
     # (There are also numerous other ways to provide the secret key to cosign.)
     COSIGN_PASSWORD=$(base64d "$COSIGN_SECRET_PASSWORD") \
     COSIGN_KEY=$(base64d "$COSIGN_SECRET_KEY") \
-        cosign "$cmd" -y --key=env://COSIGN_KEY $REKOR_OPT "${opts[@]}" "$FULL_IMAGE_REF"
+        cosign "$cmd" -y --key=env://COSIGN_KEY $REKOR_OPT \
+        --fulcio-url="" \
+        --oidc-issuer="" \
+        "${opts[@]}" "$FULL_IMAGE_REF"
 }
 
 # Generates data for an attestation predicate
